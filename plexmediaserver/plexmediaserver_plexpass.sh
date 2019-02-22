@@ -1,7 +1,7 @@
 #!/bin/zsh
 ## This script will install plexmedia_plexpass
 
-echo "Enter the plex server's IP Address: "
+echo "Enter the plexserver's IP Address: "
 read plexip
 echo "You entered $plexip"
 sleep 1
