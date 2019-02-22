@@ -1,7 +1,7 @@
 ## This repo automatically install iocage jails in FreeNAS 11.2-U2
 
-- Default shell of FreeNAS 11.2-U2 is `/bin/zsh`
-- If you upgrade from FreeNAS 11.1-U* to FreeNAS 11.2-U2, the old default shell will be remain and it is `/bin/csh`
-- You can change this by going to root user account and change default shell to `/bin/zsh`
+- Note that
+
+    The default shell for a new install of FreeNAS is `/bin/zsh`. FreeNAS systems that are upgraded from an earlier version will continue to use `/bin/csh` as the default shell. The default shell can be changed by clicking Accounts ‣ Users, clicking > (Options) of the desired user, then selecting Edit. Choose the desired shell from the Shell drop-down.
 
 
