@@ -1,11 +1,14 @@
 #!/bin/zsh
-## This script will install plexmedia_plexpass
 
-echo "Enter the plexmediaserver_plexpass IP Address: "
-read plexip
-echo "You entered $plexip"
-sleep 2
-echo "Enter the default gateway of your network: "
-read gwip
-echo "You entered $gwip"
-sleep 2
+echo "Iocage Jails Installation Script in FreeNAS 11.2-U2"
+echo "Which jail you want to install"
+select ans in "plexpass" "sonarr" "radarr" "jackett" "transmission" "Quit"; do
+    case $ans in
+        plexpass ) /bin/zsh ./plexmediaserver/plexmediaserver_plexpass.sh; break;;
+        sonarr ) /bin/zsh ./sonarr/sonarr.sh; break;;
+        radarr ) /bin/zsh ./radarr/radarr.sh; break;;
+	    jackett ) /bin/zsh ./jackett/jackett.sh; break;;
+        transmission ) /bin/zsh ./transmission/transmission.sh; break;;
+	    Quit ) exit;;
+    esac
+done
