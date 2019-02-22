@@ -1,9 +1,9 @@
 #!/bin/zsh
 ## This script will install iocage sonarr jail
 
-echo "Enter the plexserver's IP Address: "
-read plexip
-echo "You entered $plexip"
+echo "Enter the sonarr's IP Address: "
+read sonarrip
+echo "You entered $sonarrip"
 sleep 1
 echo "Enter the default gateway of your network: "
 read gwip
@@ -11,7 +11,7 @@ echo "You entered $gwip"
 sleep 1
 # install sonarr
 echo '{"pkgs":["mono","nano","wget","mediainfo","sqlite3","ca_root_nss","curl"]}' > /tmp/pkg.json
-iocage create -n "sonarr" -p /tmp/pkg.json -r 11.2-RELEASE ip4_addr="vnet0|10.0.0.8/24" defaultrouter="10.0.0.1" vnet="on" allow_raw_sockets="1" boot="on" 
+iocage create -n "sonarr" -p /tmp/pkg.json -r 11.2-RELEASE ip4_addr="vnet0|$sonarrip/24" defaultrouter=$gwip vnet="on" allow_raw_sockets="1" boot="on" 
 rm -f /tmp/pkg.json
 #
 iocage exec sonarr mkdir /config
@@ -33,8 +33,10 @@ iocage exec sonarr mv /usr/local/share/NzbDrone/ /usr/local/share/Sonarr/
 iocage exec sonarr chown -R media:media /usr/local/share/Sonarr /config
 iocage exec sonarr  sysrc 'sonarr_user=media'
 # Add script
-nano /mnt/data/iocage/jails/sonarr/root/usr/local/etc/rc.d/sonarr
+cp sonarr /mnt/data/iocage/jails/sonarr/root/usr/local/etc/rc.d/sonarr
 #
 iocage exec sonarr chmod u+x /usr/local/etc/rc.d/sonarr
 iocage exec sonarr sysrc "sonarr_enable=YES"
 iocage exec sonarr service sonarr start
+#
+echo "The site is located @ $sonarrip:8989"
