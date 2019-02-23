@@ -25,7 +25,7 @@ iocage fstab -a radarr /mnt/data/plexmedia/movies /mnt/movies nullfs rw 0 0
 # install radarr pkg
 iocage exec radarr ln -s /usr/local/bin/mono /usr/bin/mono
 iocage exec radarr "fetch https://github.com/Radarr/Radarr/releases/download/v0.2.0.1293/Radarr.develop.0.2.0.1293.linux.tar.gz -o /usr/local/share"
-iocage exec radarr "tar -xzvf /usr/local/share/Radarr.develop.0.2.0.1293.linux.tar.gz -C /usr/local/share"
+iocage exec radarr "tar xf /usr/local/share/Radarr.develop.0.2.0.1293.linux.tar.gz -C /usr/local/share"
 iocage exec radarr rm /usr/local/share/Radarr.v0.2.0.1217.linux.tar.gz
 # set media permissions
 iocage exec radarr "pw useradd radarr -c radarr -u 352 -d /nonexistent -s /usr/bin/nologin"
@@ -36,10 +36,11 @@ iocage exec radarr chown -R media:media /usr/local/share/Radarr /config
 iocage exec radarr sysrc 'radarr_user=media'
 iocage exec radarr service radarr start
 # add radarr script
-cp radarr /mnt/data/iocage/jails/radarr/root/usr/local/etc/rc.d/radarr
+cp radarr/radarr /mnt/data/iocage/jails/radarr/root/usr/local/etc/rc.d/radarr
 # autostart radarr service
 iocage exec radarr chmod u+x /usr/local/etc/rc.d/radarr
 iocage exec radarr sysrc "radarr_enable=YES"
 iocage exec radarr service radarr start
+sleep 3
 #
-echo "Access radarr @ $radarrip:7878"
+echo "Access radarr @ $radarrip:7878 in LAN"

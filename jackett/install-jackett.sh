@@ -24,10 +24,11 @@ iocage exec jackett "pw useradd jackett -c jackett -u 818 -d /nonexistent -s /us
 iocage exec jackett chown -R jackett:jackett /usr/local/share/Jackett /config
 iocage exec jackett mkdir /usr/local/etc/rc.d
 # add jackett script
-cp jackett /mnt/data/iocage/jails/jackett/root/usr/local/etc/rc.d/jackett
+cp jackett/jackett /mnt/data/iocage/jails/jackett/root/usr/local/etc/rc.d/jackett
 # autostart jackett service
 iocage exec jackett chmod u+x /usr/local/etc/rc.d/jackett
 iocage exec jackett sysrc "jackett_enable=YES"
 iocage exec jackett service jackett start
+sleep 3
 #
-echo "Access jackett @ $jackettip:9117"
+echo "Access jackett @ $jackettip:9117 in LAN"

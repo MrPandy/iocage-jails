@@ -1,8 +1,8 @@
 #!/bin/zsh
-## This script will install plexpass
+## This script will install plexpass (plex pass user only)
 
-# configure plexserver's IP address & gateway
-echo "Enter the plexserver's IP Address: "
+# configure plexpass's IP address & gateway
+echo "Enter the plexpass's IP Address: "
 read plexip
 echo "You entered $plexip"
 sleep 1
@@ -33,5 +33,6 @@ iocage exec plexpass chown -R plex:plex /config
 iocage exec plexpass sysrc "plexmediaserver_plexpass_enable=YES"
 iocage exec plexpass sysrc plexmediaserver_plexpass_support_path="/config"
 iocage exec plexpass service plexmediaserver_plexpass start
+sleep 3
 #
-echo "Access plexpass @ $plexip:32400/web"
+echo "Access plexpass @ $plexip:32400/web in LAN"
