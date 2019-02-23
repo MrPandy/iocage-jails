@@ -1,5 +1,5 @@
 #!/bin/zsh
-## This script will install iocage sonarr jail
+## This script will install sonarr
 
 # configure sonarr's IP address & gateway
 echo "Enter the sonarr's IP Address: "
@@ -33,9 +33,9 @@ iocage exec sonarr "pw groupmod media -m sonarr"
 iocage exec sonarr mv /usr/local/share/NzbDrone/ /usr/local/share/Sonarr/
 iocage exec sonarr chown -R media:media /usr/local/share/Sonarr /config
 iocage exec sonarr  sysrc 'sonarr_user=media'
-# Add script
+# add sonarr script
 cp sonarr /mnt/data/iocage/jails/sonarr/root/usr/local/etc/rc.d/sonarr
-#
+# autostart sonarr service
 iocage exec sonarr chmod u+x /usr/local/etc/rc.d/sonarr
 iocage exec sonarr sysrc "sonarr_enable=YES"
 iocage exec sonarr service sonarr start

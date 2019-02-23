@@ -1,5 +1,5 @@
 #!/bin/zsh
-## This script will install iocage jackett jail
+## This script will install jackett
 
 # configure jackett's IP address & gateway
 echo "Enter the jackett's IP address: "
