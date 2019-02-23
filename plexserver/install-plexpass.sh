@@ -32,4 +32,4 @@ iocage exec plexpass sysrc "plexmediaserver_plexpass_enable=YES"
 iocage exec plexpass sysrc plexmediaserver_plexpass_support_path="/config"
 iocage exec plexpass service plexmediaserver_plexpass start
 #
-echo "The site is located @ $plexip:32400/web"
+echo "Access plexpass @ $plexip:32400/web"

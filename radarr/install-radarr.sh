@@ -27,8 +27,8 @@ iocage exec radarr "fetch https://github.com/Radarr/Radarr/releases/download/v0.
 iocage exec radarr "tar -xzvf /usr/local/share/Radarr.develop.0.2.0.1293.linux.tar.gz -C /usr/local/share"
 iocage exec radarr rm /usr/local/share/Radarr.v0.2.0.1217.linux.tar.gz
 # Media Permissions
-iocage exec radarr "pw user add radarr -c radarr -u 352 -d /nonexistent -s /usr/bin/nologin"
-iocage exec radarr "pw user add media -c media -u 8675309 -d /nonexistent -s /usr/bin/nologin"
+iocage exec radarr "pw useradd radarr -c radarr -u 352 -d /nonexistent -s /usr/bin/nologin"
+iocage exec radarr "pw useradd media -c media -u 8675309 -d /nonexistent -s /usr/bin/nologin"
 iocage exec radarr "pw groupadd -n media -g 8675309"
 iocage exec radarr "pw groupmod media -m radarr"
 iocage exec radarr chown -R media:media /usr/local/share/Radarr /config
@@ -41,4 +41,4 @@ iocage exec radarr chmod u+x /usr/local/etc/rc.d/radarr
 iocage exec radarr sysrc "radarr_enable=YES"
 iocage exec radarr service radarr start
 #
-echo "The site is located @ $radarrip:7878"
+echo "Access radarr @ $radarrip:7878"
