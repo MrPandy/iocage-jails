@@ -43,7 +43,7 @@ iocage exec transmission "pw groupmod media -m transmission"
 iocage exec transmission  chown -R media:media /config/transmission-home
 iocage exec transmission  chown -R media:media /mnt/downloads
 iocage exec transmission  sysrc 'transmission_user=media'
-# disable transmission rpc-whitelist from true > false
+# disable transmission rpc-whitelist
 iocage exec transmission service transmission start
 echo "Wait 5s for transmission to create its settings"
 sleep 5
