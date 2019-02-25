@@ -47,4 +47,6 @@ iocage exec transmission  sysrc 'transmission_user=media'
 iocage exec transmission service ipfw start
 iocage exec transmission service openvpn start
 iocage exec transmission service transmission start
+#
+echo "Access transmission @ $transip:8989 in LAN"
  
