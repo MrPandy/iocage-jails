@@ -27,8 +27,8 @@ iocage exec sonarr "fetch http://download.sonarr.tv/v2/master/mono/NzbDrone.mast
 iocage exec sonarr "tar xf /usr/local/share/NzbDrone.master.tar.gz -C /usr/local/share"
 iocage exec sonarr rm /usr/local/share/NzbDrone.master.tar.gz
 # set media permissions
+iocage exec sonarr "pw useradd sonarr -c sonarr -u 351 -d /nonexistent -s /usr/bin/nologin"
 iocage exec sonarr "pw useradd media -c media -u 8675309 -d /nonexistent -s /usr/bin/nologin"
-iocage exec sonarr "pw groupadd -n media -g 8675309"
 iocage exec sonarr "pw groupmod media -m sonarr"
 iocage exec sonarr mv /usr/local/share/NzbDrone/ /usr/local/share/Sonarr/
 iocage exec sonarr chown -R media:media /usr/local/share/Sonarr /config

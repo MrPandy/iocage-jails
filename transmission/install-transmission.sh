@@ -37,8 +37,7 @@ iocage exec transmission sysrc "transmission_enable=YES"
 iocage exec transmission sysrc "transmission_conf_dir=/config/transmission-home"
 iocage exec transmission sysrc "transmission_download_dir=/mnt/downloads/completed"
 # set media permissions
-iocage exec transmission "pw user add media -c media -u 8675309 -d /nonexistent -s /usr/bin/nologin"
-iocage exec transmission "pw groupadd -n media -g 8675309"
+iocage exec transmission "pw useradd media -c media -u 8675309 -d /nonexistent -s /usr/bin/nologin"
 iocage exec transmission "pw groupmod media -m transmission"
 iocage exec transmission  chown -R media:media /config/transmission-home
 iocage exec transmission  chown -R media:media /mnt/downloads

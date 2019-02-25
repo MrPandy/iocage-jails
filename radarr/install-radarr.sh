@@ -30,7 +30,6 @@ iocage exec radarr rm /usr/local/share/Radarr.v0.2.0.1217.linux.tar.gz
 # set media permissions
 iocage exec radarr "pw useradd radarr -c radarr -u 352 -d /nonexistent -s /usr/bin/nologin"
 iocage exec radarr "pw useradd media -c media -u 8675309 -d /nonexistent -s /usr/bin/nologin"
-iocage exec radarr "pw groupadd -n media -g 8675309"
 iocage exec radarr "pw groupmod media -m radarr"
 iocage exec radarr chown -R media:media /usr/local/share/Radarr /config
 iocage exec radarr sysrc 'radarr_user=media'
