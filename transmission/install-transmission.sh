@@ -41,7 +41,7 @@ iocage exec transmission "pw useradd media -c media -u 8675309 -d /nonexistent -
 iocage exec transmission "pw groupmod media -m transmission"
 iocage exec transmission  chown -R media:media /config/transmission-home
 iocage exec transmission  chown -R media:media /mnt/downloads
-iocage exec transmission  sysrc 'transmission_user=media'
+iocage exec transmission  sysrc "transmission_user=media"
 # disable transmission rpc-whitelist
 iocage exec transmission service transmission start
 echo "Wait 5s for transmission to create its settings"

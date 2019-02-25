@@ -32,7 +32,7 @@ iocage exec radarr "pw useradd radarr -c radarr -u 352 -d /nonexistent -s /usr/b
 iocage exec radarr "pw useradd media -c media -u 8675309 -d /nonexistent -s /usr/bin/nologin"
 iocage exec radarr "pw groupmod media -m radarr"
 iocage exec radarr chown -R media:media /usr/local/share/Radarr /config
-iocage exec radarr sysrc 'radarr_user=media'
+iocage exec radarr sysrc "radarr_user=media"
 iocage exec radarr service radarr start
 # add radarr script
 cp radarr/radarr /mnt/data/iocage/jails/radarr/root/usr/local/etc/rc.d/radarr

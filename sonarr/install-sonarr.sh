@@ -19,7 +19,7 @@ iocage exec sonarr mkdir /config
 iocage fstab -a sonarr /mnt/data/apps/sonarr /config nullfs rw 0 0
 # create and set mount points
 iocage exec sonarr mkdir /mnt/{downloads,tvshows}
-iocage fstab -a sonarr /mnt/data/downloads/completed /mnt/downloads nullfs rw 0 0
+iocage fstab -a sonarr /mnt/data/downloads/ /mnt/downloads nullfs rw 0 0
 iocage fstab -a sonarr /mnt/data/plexmedia/tvshows /mnt/tvshows nullfs rw 0 0
 # install sonarr pkg
 iocage exec sonarr ln -s /usr/local/bin/mono /usr/bin/mono
@@ -32,7 +32,7 @@ iocage exec sonarr "pw useradd media -c media -u 8675309 -d /nonexistent -s /usr
 iocage exec sonarr "pw groupmod media -m sonarr"
 iocage exec sonarr mv /usr/local/share/NzbDrone/ /usr/local/share/Sonarr/
 iocage exec sonarr chown -R media:media /usr/local/share/Sonarr /config
-iocage exec sonarr  sysrc 'sonarr_user=media'
+iocage exec sonarr  sysrc "sonarr_user=media"
 # add sonarr script
 cp sonarr/sonarr /mnt/data/iocage/jails/sonarr/root/usr/local/etc/rc.d/sonarr
 # autostart sonarr service
