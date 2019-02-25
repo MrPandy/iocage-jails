@@ -43,10 +43,20 @@ iocage exec transmission "pw groupmod media -m transmission"
 iocage exec transmission  chown -R media:media /config/transmission-home
 iocage exec transmission  chown -R media:media /mnt/downloads
 iocage exec transmission  sysrc 'transmission_user=media'
+# disable transmission rpc-whitelist from true > false
+iocage exec transmission service transmission start
+echo "Wait 5s for transmission to create its settings"
+sleep 5
+iocage exec transmission service transmission stop
+settings="/mnt/data/iocage/jails/transmission/root/config/transmission-home/settings.json"
+sed -i 's/"rpc-whitelist": "127.0.0.1",/"rpc-whitelist": "0.0.0.0",/g' $settings
+sed -i 's/"rpc-whitelist-enabled": true,/"rpc-whitelist-enabled": false,/g' $settings
+echo "Disabled rpc-whitelist"
+sleep 3
 # start services
 iocage exec transmission service ipfw start
 iocage exec transmission service openvpn start
 iocage exec transmission service transmission start
 #
-echo "Access transmission @ $transip:8989 in LAN"
+echo "Access transmission @ $transip:9091/transmission/web in LAN"
  
