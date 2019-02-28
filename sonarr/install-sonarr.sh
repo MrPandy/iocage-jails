@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/local/bin/zsh
 ## This script will install sonarr
 
 # configure sonarr's IP address & gateway

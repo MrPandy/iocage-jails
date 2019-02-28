@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/local/bin/zsh
 ## This script will install jackett
 
 # configure jackett's IP address & gateway

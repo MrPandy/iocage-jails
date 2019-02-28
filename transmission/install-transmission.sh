@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/local/bin/zsh
 ## This script will install transmission
 
 # configure transmission's IP address & gateway

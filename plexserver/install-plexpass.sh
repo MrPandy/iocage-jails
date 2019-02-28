@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/local/bin/zsh
 ## This script will install plexpass (plex pass user only)
 
 # configure plexpass's IP address & gateway

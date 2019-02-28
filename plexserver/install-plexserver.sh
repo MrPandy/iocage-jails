@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/local/bin/zsh
 ## This script will install plexserver
 
 # configure plexserver's IP address & gateway

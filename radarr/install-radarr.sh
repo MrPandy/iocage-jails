@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/local/bin/zsh
 ## This script will install radarr
 
 # configure radarr's IP address & gateway
