@@ -19,13 +19,12 @@ iocage exec jackett "tar -xf /usr/local/share/Jackett.Binaries.Mono.tar.gz -C /u
 iocage exec jackett rm -f /usr/local/share/Jackett.Binaries.Mono.tar.gz
 # setup jackett user account
 iocage exec jackett "pw useradd jackett -c jackett -u 818 -d /nonexistent -s /usr/bin/nologin"
-iocage exec jackett chown -R jackett:jackett /usr/local/share/Jackett /config
-iocage exec jackett mkdir /usr/local/etc/rc.d
+iocage exec jackett "chown -R jackett:jackett /usr/local/share/Jackett /config"
 # add jackett script
-iocage exec jackett mkdir -p /usr/local/etc/rc.d
+iocage exec jackett mkdir /usr/local/etc/rc.d
 cp jackett/jackett /mnt/data/iocage/jails/jackett/root/usr/local/etc/rc.d/jackett
 # autostart jackett service
-iocage exec jackett chmod u+x /usr/local/etc/rc.d/jackett
+iocage exec jackett "chmod u+x /usr/local/etc/rc.d/jackett"
 iocage exec jackett sysrc "jackett_enable=YES"
 iocage exec jackett service jackett start
 sleep 3
