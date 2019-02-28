@@ -5,11 +5,9 @@
 echo "Enter the radarr's IP Address: "
 read radarrip
 echo "You entered $radarrip"
-sleep 1
 echo "Enter the default gateway of your network: "
 read gwip
 echo "You entered $gwip"
-sleep 1
 # create radarr jail
 echo '{"pkgs":["nano","mono","mediainfo","sqlite3","ca_root_nss","curl"]}' > /tmp/pkg.json
 iocage create -n "radarr" -p /tmp/pkg.json -r 11.2-RELEASE ip4_addr="vnet0|$radarrip/24" defaultrouter=$gwip vnet="on" allow_raw_sockets="1" boot="on"

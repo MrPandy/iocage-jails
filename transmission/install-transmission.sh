@@ -5,11 +5,9 @@
 echo "Enter the transmission's IP Address: "
 read transip
 echo "You entered $transip"
-sleep 1
 echo "Enter the default gateway of your network: "
 read gwip
 echo "You entered $gwip"
-sleep 1
 # create transmission jail
 echo '{"pkgs":["nano","wget","bash","transmission","openvpn","curl"]}' > /tmp/pkg.json
 iocage create -n "transmission" -p /tmp/pkg.json -r 11.2-RELEASE ip4_addr="vnet0|$transip/24" defaultrouter=$gwip vnet="on" allow_raw_sockets="1" boot="on"

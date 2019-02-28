@@ -5,11 +5,9 @@
 echo "Enter the plexpass's IP Address: "
 read plexip
 echo "You entered $plexip"
-sleep 1
 echo "Enter the default gateway of your network: "
 read gwip
 echo "You entered $gwip"
-sleep 1
 # create plexpass jail
 echo '{"pkgs":["plexmediaserver-plexpass","nano","wget","curl","ca_root_nss"]}' > /tmp/pkg.json
 iocage create -n "plexpass" -p /tmp/pkg.json -r 11.2-RELEASE ip4_addr="vnet0|$plexip/24" defaultrouter=$gwip vnet="on" allow_raw_sockets="1" boot="on"

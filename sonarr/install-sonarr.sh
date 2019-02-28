@@ -5,11 +5,9 @@
 echo "Enter the sonarr's IP Address: "
 read sonarrip
 echo "You entered $sonarrip"
-sleep 1
 echo "Enter the default gateway of your network: "
 read gwip
 echo "You entered $gwip"
-sleep 1
 # create sonarr jail
 echo '{"pkgs":["mono","nano","wget","mediainfo","sqlite3","ca_root_nss","curl"]}' > /tmp/pkg.json
 iocage create -n "sonarr" -p /tmp/pkg.json -r 11.2-RELEASE ip4_addr="vnet0|$sonarrip/24" defaultrouter=$gwip vnet="on" allow_raw_sockets="1" boot="on" 
