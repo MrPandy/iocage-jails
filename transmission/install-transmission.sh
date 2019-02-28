@@ -15,11 +15,11 @@ echo '{"pkgs":["nano","wget","bash","transmission","openvpn","curl"]}' > /tmp/pk
 iocage create -n "transmission" -p /tmp/pkg.json -r 11.2-RELEASE ip4_addr="vnet0|$transip/24" defaultrouter=$gwip vnet="on" allow_raw_sockets="1" boot="on"
 rm -f /tmp/pkg.json
 # setup transmission config path
-iocage exec transmission mkdir -p /config/
-iocage exec transmission mkdir -p /config/transmission-home
+iocage exec transmission mkdir /config/
+iocage exec transmission mkdir /config/transmission-home
 iocage fstab -a transmission /mnt/data/apps/transmission /config nullfs rw 0 0
 # create and set mount point
-iocage exec transmission mkdir -p  /mnt/downloads
+iocage exec transmission mkdir /mnt/downloads
 iocage fstab -a transmission /mnt/data/downloads /mnt/downloads nullfs rw 0 0
 # setup openvpn & firewall rules
 cp transmission/openvpn/* /mnt/data/iocage/jails/transmission/root/config/

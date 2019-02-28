@@ -24,7 +24,7 @@ iocage fstab -a sonarr /mnt/data/plexmedia/tvshows /mnt/tvshows nullfs rw 0 0
 # install sonarr pkg
 iocage exec sonarr ln -s /usr/local/bin/mono /usr/bin/mono
 iocage exec sonarr "fetch http://download.sonarr.tv/v2/master/mono/NzbDrone.master.tar.gz -o /usr/local/share"
-iocage exec sonarr "tar xf /usr/local/share/NzbDrone.master.tar.gz -C /usr/local/share"
+iocage exec sonarr "tar -xf /usr/local/share/NzbDrone.master.tar.gz -C /usr/local/share"
 iocage exec sonarr rm /usr/local/share/NzbDrone.master.tar.gz
 # set media permissions
 iocage exec sonarr "pw useradd sonarr -c sonarr -u 351 -d /nonexistent -s /usr/bin/nologin"
@@ -34,6 +34,7 @@ iocage exec sonarr mv /usr/local/share/NzbDrone/ /usr/local/share/Sonarr/
 iocage exec sonarr chown -R media:media /usr/local/share/Sonarr /config
 iocage exec sonarr  sysrc "sonarr_user=media"
 # add sonarr script
+iocage exec sonarr mkdir /usr/local/etc/rc.d
 cp sonarr/sonarr /mnt/data/iocage/jails/sonarr/root/usr/local/etc/rc.d/sonarr
 # autostart sonarr service
 iocage exec sonarr chmod u+x /usr/local/etc/rc.d/sonarr
