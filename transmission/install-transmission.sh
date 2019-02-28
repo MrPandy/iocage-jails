@@ -45,8 +45,9 @@ iocage exec transmission service transmission start
 echo "Wait 5s for transmission to create its settings"
 sleep 5
 iocage exec transmission service transmission stop
-sed -i 's/"rpc-whitelist": "127.0.0.1",/"rpc-whitelist": "0.0.0.0",/g' /mnt/data/iocage/jails/transmission/root/config/transmission-home/settings.json
-sed -i 's/"rpc-whitelist-enabled": true,/"rpc-whitelist-enabled": false,/g' /mnt/data/iocage/jails/transmission/root/config/transmission-home/settings.json
+settings=/mnt/data/iocage/jails/transmission/root/config/transmission-home/settings.json
+sed -e 's/"rpc-whitelist": "127.0.0.1",/"rpc-whitelist": "0.0.0.0",/g' $settings
+sed -e 's/"rpc-whitelist-enabled": true,/"rpc-whitelist-enabled": false,/g' $settings
 echo "Disabled rpc-whitelist"
 sleep 3
 # start services
