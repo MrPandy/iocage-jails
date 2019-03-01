@@ -10,7 +10,7 @@ read gwip
 echo "You entered $gwip"
 # create transmission jail
 echo '{"pkgs":["nano","wget","bash","transmission","openvpn","curl"]}' > /tmp/pkg.json
-iocage create -n "transmission" -p /tmp/pkg.json -r 11.2-RELEASE ip4_addr="vnet0|$transip/24" defaultrouter=$gwip vnet="on" allow_raw_sockets="1" boot="on"
+iocage create -n "transmission" -p /tmp/pkg.json -r 11.2-RELEASE ip4_addr="vnet0|$transip/24" defaultrouter=$gwip vnet="on" allow_raw_sockets="1" boot="on" allow_tun="1"
 rm -f /tmp/pkg.json
 # setup transmission config path
 iocage exec transmission mkdir /config/
