@@ -18,8 +18,18 @@ iocage fstab -a radarr /mnt/data/apps/radarr /config nullfs rw 0 0
 # create and set mount points
 iocage exec radarr mkdir /mnt/downloads
 iocage exec radarr mkdir /mnt/movies
+iocage exec radarr mkdir /mnt/animated
+iocage exec radarr mkdir /mnt/dceu
+iocage exec radarr mkdir /mnt/horrors
+iocage exec radarr mkdir /mnt/marvels
+iocage exec radarr mkdir /mnt/xmen
 iocage fstab -a radarr /mnt/data/downloads /mnt/downloads nullfs rw 0 0
+iocage fstab -a radarr /mnt/data/plexmedia/animated /mnt/animated nullfs rw 0 0
+iocage fstab -a radarr /mnt/data/plexmedia/dceu /mnt/dceu nullfs rw 0 0
+iocage fstab -a radarr /mnt/data/plexmedia/horrors /mnt/horrors nullfs rw 0 0
+iocage fstab -a radarr /mnt/data/plexmedia/marvels /mnt/marvels nullfs rw 0 0
 iocage fstab -a radarr /mnt/data/plexmedia/movies /mnt/movies nullfs rw 0 0
+iocage fstab -a radarr /mnt/data/plexmedia/xmen /mnt/xmen nullfs rw 0 0
 # install radarr pkg
 iocage exec radarr ln -s /usr/local/bin/mono /usr/bin/mono
 iocage exec radarr "fetch https://github.com/Radarr/Radarr/releases/download/v0.2.0.1293/Radarr.develop.0.2.0.1293.linux.tar.gz -o /usr/local/share"
