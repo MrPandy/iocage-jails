@@ -33,7 +33,7 @@ iocage exec transmission sysrc "openvpn_configfile=/config/openvpn.conf"
 # autostart transmission service
 iocage exec transmission sysrc "transmission_enable=YES"
 iocage exec transmission sysrc "transmission_conf_dir=/config/transmission-home"
-iocage exec transmission sysrc "transmission_download_dir=/mnt/downloads/completed"
+iocage exec transmission sysrc "transmission_download_dir=/mnt/downloads"
 # set media permissions
 iocage exec transmission "pw useradd media -c media -u 8675309 -d /nonexistent -s /usr/bin/nologin"
 iocage exec transmission "pw groupmod media -m transmission"
